@@ -1,0 +1,30 @@
+{
+    "name": "cuby/meteorsis",
+    "description": "Meteorsis API implementation",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anderson Fan",
+            "email": "andersonfantw@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Cubt\\Meteorsis\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cuby\\Meteorsis\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
+}
