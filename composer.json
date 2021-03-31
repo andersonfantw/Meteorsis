@@ -12,7 +12,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Cubt\\Meteorsis\\": "src"
+            "Cuby\\Meteorsis\\": "src"
         }
     },
     "autoload-dev": {
@@ -26,5 +26,12 @@
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cuby\\Meteorsis\\CubyBaseProvider"
+            ]
+        }
+    }
 }
