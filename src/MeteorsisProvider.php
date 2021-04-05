@@ -18,6 +18,10 @@ class MeteorsisProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
 
+        // 設定檔處理
+        $services_source = realpath($raw = __DIR__.'/../config/services.php') ?: $raw;
+        $meteorsis_source = realpath($raw = __DIR__.'/../config/Meteorsis.php') ?: $raw;
+
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$services_source => config_path('services.php')]);
         } elseif ($this->app instanceof LumenApplication) {
@@ -38,15 +42,11 @@ class MeteorsisProvider extends ServiceProvider
      */
     public function boot()
     {
-        // 設定檔處理
-        $services_source = realpath($raw = __DIR__.'/../config/services.php') ?: $raw;
-        $meteorsis_source = realpath($raw = __DIR__.'/../config/Meteorsis.php') ?: $raw;
-
         // callback處理
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         
         $this->publishes([
-            __DIR__.'/../config/Meteorsis.php' => config_path('CubyBase/meteorsis.php'),
+            __DIR__.'/../config/Meteorsis.php' => config_path('meteorsis.php'),
        ]);
     }
 }
