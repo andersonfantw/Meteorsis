@@ -17,6 +17,18 @@ class MeteorsisProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(EventServiceProvider::class);
+
+        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
+            $this->publishes([$services_source => config_path('services.php')]);
+        } elseif ($this->app instanceof LumenApplication) {
+            $this->app->configure('services');
+            $this->app->configure('Meteorsis');
+        }
+
+        if ($this->app instanceof LaravelApplication && ! $this->app->configurationIsCached()) {
+            $this->mergeConfigFrom($services_source, 'services');
+            $this->mergeConfigFrom($meteorsis_source, 'Meteorsis');
+        }
     }
 
     /**
@@ -30,19 +42,11 @@ class MeteorsisProvider extends ServiceProvider
         $services_source = realpath($raw = __DIR__.'/../config/services.php') ?: $raw;
         $meteorsis_source = realpath($raw = __DIR__.'/../config/Meteorsis.php') ?: $raw;
 
-        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
-            $this->publishes([$services_source => config_path('services.php')]);
-        } elseif ($this->app instanceof LumenApplication) {
-            $this->app->configure('services');
-            $this->app->configure('Meteorsis');
-        }
-
-        if ($this->app instanceof LaravelApplication && ! $this->app->configurationIsCached()) {
-            $this->mergeConfigFrom($services_source, 'services');
-            $this->mergeConfigFrom($meteorsis_source, 'Meteorsis');
-        }
-
         // callback處理
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        
+        $this->publishes([
+            __DIR__.'/../config/Meteorsis.php' => config_path('CubyBase/meteorsis.php'),
+       ]);
     }
 }
