@@ -12,12 +12,12 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Cuby\\Meteorsis\\": "src"
+            "Meteorsis\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Cuby\\Meteorsis\\Tests\\": "tests"
+            "Meteorsis\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -30,7 +30,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Cuby\\Meteorsis\\CubyBaseProvider"
+                "Meteorsis\\CubyBaseProvider"
             ]
         }
     }
