@@ -28,6 +28,6 @@ class MeteorsisGetAccountBalanceNotification
     public function handle(MeteorsisGetAccountBalanceEvent $event)
     {
         //$event->balance
-        Log::alert(springf('[%s][%s]%s - %s. %s',datetime('Y-m-d H:i:s'), $event->sender, 'Meteorsis Get Account Balance', sprintf('Meteorsis截至今日的帳戶餘額為 %s',$event->balance), ''));
+        Log::alert(sprintf('[%s][%s]%s - %s. %s',date('Y-m-d H:i:s'), $event->sender, 'Meteorsis Get Account Balance', sprintf('Meteorsis截至今日的帳戶餘額為 %s',$event->balance), ''));
     }
 }
