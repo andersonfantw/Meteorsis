@@ -76,6 +76,6 @@ return [
     ],
     'max_words' => [
         'title' => [11,16],     //英文+數字, 數字
-        'content' => [459,201], //英文+數字+符號, Unicode-16
+        'content' => [201,459], //Unicode-16, 英文+數字+符號
     ],
 ];
