@@ -29,7 +29,7 @@ class MeteorsisMessage extends Notification implements ShouldQueue
 
     public $content;
     public $recipients = [];
-    public $encode = 0;
+    public $encode = 1;
     public $dos;
     public $senderid = '';
 
@@ -147,7 +147,7 @@ class MeteorsisMessage extends Notification implements ShouldQueue
     protected function content($content)
     {
         // 以預設英文驗證長度
-        $this->encode = 0;
+        $this->encode = 1;
         if(strlen($content)>$this->maxWords['content'][$this->encode])
         {
             // 簡訊長度超過限制
@@ -268,7 +268,7 @@ class MeteorsisMessage extends Notification implements ShouldQueue
 
     protected function unicode()
     {
-        if($this->encode == 1) return $this;
+        if($this->encode == 0) return $this;
 
         if(strlen($this->content)>$this->maxWords['content'][$this->encode])
         {
@@ -280,7 +280,7 @@ class MeteorsisMessage extends Notification implements ShouldQueue
                 $this->content
             ));
         }else{
-            $this->encode = 1;
+            $this->encode = 0;
             $_content = $this->Text2Unicode($this->content);
             $this->content = $_content;
         }
