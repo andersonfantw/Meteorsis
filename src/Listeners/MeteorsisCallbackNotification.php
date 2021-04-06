@@ -28,6 +28,6 @@ class MeteorsisCallbackNotification
     public function handle(MeteorsisCallbackEvent $event)
     {
         //$this->request
-        Log::alert(springf('[%s][%s]%s - %s. %s',datetime('Y-m-d H:i:s'), $event->sender, 'Meteorsis Callback', 'Meteorsis回傳一個簡訊傳送紀錄', print_r($event->request)));
+        Log::alert(sprintf('[%s][%s]%s - %s. %s',date('Y-m-d H:i:s'), $event->sender, 'Meteorsis Callback', 'Meteorsis回傳一個簡訊傳送紀錄', print_r($event->request)));
     }
 }
