@@ -28,6 +28,6 @@ class MeteorsisGetServerQueryNotification
     public function handle(MeteorsisGetServerQueryEvent $event)
     {
         //$this->queue
-        Log::alert(springf('[%s][%s]%s - %s. %s',datetime('Y-m-d H:i:s'), $event->sender, 'Meteorsis Get Server Query', sprintf('Meteorsis簡訊截至目前有 %s 個排程',$event->queue), ''));
+        Log::alert(sprintf('[%s][%s]%s - %s. %s',date('Y-m-d H:i:s'), $event->sender, 'Meteorsis Get Server Query', sprintf('Meteorsis簡訊截至目前有 %s 個排程',$event->queue), ''));
     }
 }
