@@ -12,12 +12,12 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Cuby\\Meteorsis\\": "src"
+            "cuby\\meteorsis\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Cuby\\Meteorsis\\Tests\\": "tests"
+            "cuby\\meteorsis\\Tests\\": "tests"
         }
     },
     "scripts": {
